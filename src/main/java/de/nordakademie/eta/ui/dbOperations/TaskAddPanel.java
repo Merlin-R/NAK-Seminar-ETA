@@ -63,7 +63,7 @@ public class TaskAddPanel extends Panel{
                 Task task = new Task()
                         .setAssignedUser(session.getUser())
                         .setName(taskNameModel.getObject())
-                        .setPercentage((Double) Double.valueOf(taskPercentModel.getObject().toString()))
+                        //.setPercentage((Double) Double.valueOf(taskPercentModel.getObject().toString()))
                         .setPriority(TaskPriority.valueOf(taskStateModel.getObject()))
                         .setType(TaskType.valueOf(taskTypeModel.getObject())).create();
 
