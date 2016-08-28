@@ -1,5 +1,7 @@
 package de.nordakademie.eta.ui;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 
@@ -7,7 +9,7 @@ import de.nordakademie.eta.users.User;
 import de.nordakademie.eta.users.Users;
 
 public class EtaSession extends WebSession {
-
+	@Getter @Setter
 	User user;
 
 	public boolean isLoggedIn() {
