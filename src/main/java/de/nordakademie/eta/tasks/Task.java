@@ -50,7 +50,7 @@ public class Task {
 
 	public Task setAssignedUser(User user) {
 		this.userId = user.getEmail();
-		return this;
+		return this; // bla
 	}
 
 	@Override
