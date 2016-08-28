@@ -27,7 +27,7 @@ public class LoginPage extends WebPage{
         final Model<String> userNameModel        = Model.of();
         final Model<String> userPasswordModel    = Model.of();
 
-        loginForm.add(new TextField<>("user", userNameModel));
+        loginForm.add(new TextField<>("email", userNameModel));
         loginForm.add(new PasswordTextField("password", userPasswordModel));
         loginForm.add(new AjaxButton("loginSub") {
             @Override
