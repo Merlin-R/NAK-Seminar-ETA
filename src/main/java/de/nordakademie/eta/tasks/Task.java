@@ -14,12 +14,13 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import lombok.val;
+import org.bson.types.ObjectId;
 
 @Data
 public class Task {
 
 	@Setter(AccessLevel.NONE)
-	Integer			id;
+	String			id;
 
 	TaskPriority	priority;
 	String			name;
@@ -31,7 +32,7 @@ public class Task {
 	Date			creationDate;
 
 	@Setter(AccessLevel.NONE)
-	Integer			projectId;
+	String			projectId;
 	@Setter(AccessLevel.NONE)
 	String			userId;
 
@@ -77,7 +78,7 @@ public class Task {
 		}
 		val doc = toDocument();
 		MongoManager.getCollection("tasks").insertOne(doc);
-		id = doc.getInteger("_id");
+		id = doc.getObjectId("_id").toString();
 		return this;
 	}
 
@@ -110,7 +111,8 @@ public class Task {
 		doc.put("projectId", projectId);
 		doc.put("userId", userId);
 
-		doc.put("_id", id);
+		if (null != id)
+		doc.put("_id", new ObjectId(id));
 
 		return doc;
 	}
@@ -128,10 +130,10 @@ public class Task {
 		task.dueDate = doc.getDate("dueDate");
 		task.creationDate = doc.getDate("creationDate");
 
-		task.projectId = doc.getInteger("projectId");
+		task.projectId = doc.getString("projectId");
 		task.userId = doc.getString("userId");
 
-		task.id = doc.getInteger("_id");
+		task.id = doc.getObjectId("_id").toString();
 
 		return task;
 	}

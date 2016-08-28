@@ -14,11 +14,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import lombok.val;
+import org.bson.types.ObjectId;
 
 @Data
 public class Project {
 	@Setter(AccessLevel.NONE)
-	Integer			id;
+	String			id;
 
 	String			name;
 	String			description;
@@ -91,7 +92,7 @@ public class Project {
 		}
 		val doc = toDocument();
 		MongoManager.getCollection("projects").insertOne(doc);
-		id = doc.getInteger("_id");
+		id = doc.getObjectId("_id").toString();
 		return this;
 	}
 
@@ -118,7 +119,8 @@ public class Project {
 		doc.put("userIds", userIds);
 		doc.put("dueDate", dueDate);
 		doc.put("creationDate", creationDate);
-		doc.put("_id", id);
+		if (null != id)
+			doc.put("_id", new ObjectId(id));
 
 		return doc;
 	}
@@ -134,7 +136,7 @@ public class Project {
 		project.dueDate = doc.getDate("dueDate");
 		project.creationDate = doc.getDate("creationDate");
 
-		project.id = doc.getInteger("_id");
+		project.id = doc.getString("_id");
 
 		return project;
 	}
