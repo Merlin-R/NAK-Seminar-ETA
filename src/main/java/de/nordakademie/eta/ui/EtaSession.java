@@ -18,8 +18,10 @@ public class EtaSession extends WebSession {
 		user = null;
 	}
 
-	public void logIn(String email, String pass) {
+	public boolean logIn(String email, String pass) {
 		this.user = Users.byEmail(email);
+
+		return user != null;
 	}
 
 	public EtaSession(final Request request) {
