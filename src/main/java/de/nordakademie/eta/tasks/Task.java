@@ -106,6 +106,10 @@ public class Task {
 		doc.put("description", description);
 		doc.put("dueDate", dueDate);
 		doc.put("creationDate", creationDate);
+
+		doc.put("projectId", projectId);
+		doc.put("userId", userId);
+
 		doc.put("_id", id);
 
 		return doc;
@@ -123,6 +127,9 @@ public class Task {
 		task.description = doc.getString("description");
 		task.dueDate = doc.getDate("dueDate");
 		task.creationDate = doc.getDate("creationDate");
+
+		task.projectId = doc.getInteger("projectId");
+		task.userId = doc.getString("userId");
 
 		task.id = doc.getInteger("_id");
 
