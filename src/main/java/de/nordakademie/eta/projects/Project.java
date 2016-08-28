@@ -2,6 +2,7 @@ package de.nordakademie.eta.projects;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bson.Document;
 
@@ -34,6 +35,36 @@ public class Project {
 
 	public List<User> getUsers() {
 		return Users.allByEmail(userIds);
+	}
+
+	public Project setManager(User manager) {
+		managerId = manager.getEmail();
+		return this;
+	}
+
+	public Project setUsers(List<User> users) {
+		userIds = usersToEmails(users);
+		return this;
+	}
+
+	public Project addUser(User user) {
+		if (!userIds.contains(user.getEmail())) userIds.add(user.getEmail());
+		return this;
+	}
+
+	public Project removeUser(User user) {
+		if (!userIds.contains(user.getEmail())) userIds.remove(user.getEmail());
+		return this;
+	}
+
+	public Project addAllUsers(List<User> users) {
+		userIds.addAll(usersToEmails(users));
+		return this;
+	}
+
+	public Project removeAllUsers(List<User> users) {
+		userIds.removeAll(usersToEmails(users));
+		return this;
 	}
 
 	@Override
@@ -106,5 +137,9 @@ public class Project {
 		project.id = doc.getInteger("_id");
 
 		return project;
+	}
+
+	private static List<String> usersToEmails(List<User> users) {
+		return users.stream().map(User::getEmail).collect(Collectors.toList());
 	}
 }
