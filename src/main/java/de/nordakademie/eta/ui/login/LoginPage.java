@@ -37,7 +37,7 @@ public class LoginPage extends WebPage{
                 if (session.logIn(userNameModel.getObject(), userPasswordModel.getObject())){
                     RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(HomePage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
                 } else {
-
+                    RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(HomePage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
                 }
             }
         });
