@@ -8,6 +8,8 @@ import de.nordakademie.eta.database.DBException;
 import de.nordakademie.eta.database.MongoManager;
 import de.nordakademie.eta.projects.Project;
 import de.nordakademie.eta.projects.Projects;
+import de.nordakademie.eta.users.User;
+import de.nordakademie.eta.users.Users;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -31,7 +33,7 @@ public class Task {
 	@Setter(AccessLevel.NONE)
 	Integer			projectId;
 	@Setter(AccessLevel.NONE)
-	String			user;
+	String			userId;
 
 	public Project getProject() {
 		return Projects.byId(projectId);
@@ -39,6 +41,15 @@ public class Task {
 
 	public Task setProject(Project project) {
 		projectId = project.getId();
+		return this;
+	}
+
+	public User getAssignedUser() {
+		return Users.byEmail(userId);
+	}
+
+	public Task setAssignedUser(User user) {
+		this.userId = user.getEmail();
 		return this;
 	}
 
