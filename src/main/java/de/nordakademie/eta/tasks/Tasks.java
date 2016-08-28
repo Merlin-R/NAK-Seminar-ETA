@@ -13,17 +13,17 @@ import lombok.val;
 
 public class Tasks {
 
-	List<Task> all() {
+	public static List<Task> all() {
 		return MongoManager.getCollection("tasks").find().map(Task::fromDocument).into(Lists.newArrayList());
 	}
 
-	List<Task> forProject(Project p) {
+	public static List<Task> forProject(Project p) {
 		val filter = new Document();
 		filter.put("projectId", p.getId());
 		return MongoManager.getCollection("tasks").find(filter).map(Task::fromDocument).into(Lists.newArrayList());
 	}
 
-	List<Task> forUser(User u) {
+	public static List<Task> forUser(User u) {
 		val filter = new Document();
 		filter.put("userId", u.getEmail());
 		return MongoManager.getCollection("tasks").find(filter).map(Task::fromDocument).into(Lists.newArrayList());
