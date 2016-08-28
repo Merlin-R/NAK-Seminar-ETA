@@ -24,7 +24,6 @@ public class EtaSession extends WebSession {
 
 	public boolean logIn(String email, String pass) {
 		val user = Users.byEmail(email);
-
 		if (user.isPasswordCorrect(pass)) this.user = user;
 		return this.user != null;
 	}
