@@ -12,10 +12,12 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.cycle.RequestCycle;
+import org.wicketstuff.annotation.mount.MountPath;
 
 /**
  * Created by Nils on 28.08.2016.
  */
+@MountPath("login")
 public class LoginPage extends WebPage{
 
     public LoginPage() {
@@ -25,7 +27,7 @@ public class LoginPage extends WebPage{
         final Model<String> userNameModel        = Model.of();
         final Model<String> userPasswordModel    = Model.of();
 
-        loginForm.add(new TextField<>("user", userNameModel));
+        loginForm.add(new TextField<>("email", userNameModel));
         loginForm.add(new PasswordTextField("password", userPasswordModel));
         loginForm.add(new AjaxButton("loginSub") {
             @Override
