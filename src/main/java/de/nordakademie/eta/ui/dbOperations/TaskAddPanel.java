@@ -5,9 +5,9 @@ import org.apache.wicket.markup.html.panel.Panel;
 /**
  * Created by nils on 28.08.2016.
  */
-public class DbDataAdder extends Panel{
+public class TaskAddPanel extends Panel{
 
-    public DbDataAdder(String id) {
+    public TaskAddPanel(String id) {
         super(id);
 
     }
