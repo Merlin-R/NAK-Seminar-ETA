@@ -38,8 +38,16 @@ public class TaskAddPanel extends Panel{
         final Model<String> taskTypeModel = Model.of();
         final Model<String> taskStateModel = Model.of();
         final Model<Double> taskPercentModel = Model.of();
-        taskAddForm.add( new Label("typen", TaskType.values().toString()));
-        taskAddForm.add( new Label("prios", TaskPriority.values().toString()));
+        taskAddForm.add( new Label("typen", "FEATURE,\n" +
+                "\tBUG,\n" +
+                "\tCONFIG,\n" +
+                "\tSTATUS,\n" +
+                "\tCOMMENT"));
+        taskAddForm.add( new Label("prios", "HIGHEST,\n" +
+                "\tHIGH,\n" +
+                "\tDEFAULT,\n" +
+                "\tLOWER,\n" +
+                "\tOPTIONAL"));
 
         taskAddForm.add(new TextField<>               ("name", taskNameModel));
         taskAddForm.add(new TextField<>               ("hallo", taskTypeModel));
