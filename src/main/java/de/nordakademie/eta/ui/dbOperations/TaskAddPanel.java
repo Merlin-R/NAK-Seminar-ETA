@@ -34,7 +34,7 @@ public class TaskAddPanel extends Panel{
         final Model<Double> taskPercentModel = Model.of();
 
         taskAddForm.add(new TextField<>               ("name", taskNameModel));
-        taskAddForm.add(new SelectOption<String>      ("prio", taskTypeModel));
+        taskAddForm.add(new SelectOption<String>      ("typ", taskTypeModel));
         taskAddForm.add(new TextField<>               ("state", taskStateModel));
         taskAddForm.add(new NumberTextField<Double>   ("percent", taskPercentModel));
 
