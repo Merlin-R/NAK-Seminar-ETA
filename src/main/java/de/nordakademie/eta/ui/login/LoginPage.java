@@ -28,6 +28,7 @@ public class LoginPage extends WebPage{
             protected void onSubmit(final AjaxRequestTarget target, final Form<?> form){
                 super.onSubmit(target, form);
                 final EtaSession session = (EtaSession) getSession();
+
             }
         });
     }
