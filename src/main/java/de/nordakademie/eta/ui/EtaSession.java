@@ -1,15 +1,17 @@
 package de.nordakademie.eta.ui;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 
 import de.nordakademie.eta.users.User;
 import de.nordakademie.eta.users.Users;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.val;
 
 public class EtaSession extends WebSession {
-	@Getter @Setter
+	@Getter
+	@Setter
 	User user;
 
 	public boolean isLoggedIn() {
@@ -21,9 +23,10 @@ public class EtaSession extends WebSession {
 	}
 
 	public boolean logIn(String email, String pass) {
-		this.user = Users.byEmail(email);
+		val user = Users.byEmail(email);
 
-		return user != null;
+		if (user.isPasswordCorrect(pass)) this.user = user;
+		return this.user != null;
 	}
 
 	public EtaSession(final Request request) {
