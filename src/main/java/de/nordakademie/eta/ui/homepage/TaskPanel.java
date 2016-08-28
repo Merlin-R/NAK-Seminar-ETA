@@ -34,7 +34,7 @@ public class TaskPanel extends Panel{
             protected void populateItem(ListItem item){
                 Task task = (Task) item.getModelObject();
                 item.add(new Label("tName", task.getName()));
-                item.add(new Label("tDescription", task.getDescription()));
+                item.add(new Label("tDescription", task.getPriority()));
             }
         });
     }

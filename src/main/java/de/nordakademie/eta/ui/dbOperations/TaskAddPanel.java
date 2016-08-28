@@ -1,5 +1,6 @@
 package de.nordakademie.eta.ui.dbOperations;
 
+import com.sun.org.apache.xpath.internal.operations.Div;
 import de.nordakademie.eta.tasks.Task;
 import de.nordakademie.eta.tasks.TaskPriority;
 import de.nordakademie.eta.tasks.TaskType;
@@ -11,6 +12,7 @@ import org.apache.wicket.core.request.handler.PageProvider;
 import org.apache.wicket.core.request.handler.RenderPageRequestHandler;
 import org.apache.wicket.extensions.markup.html.form.palette.component.Selection;
 import org.apache.wicket.extensions.markup.html.form.select.SelectOption;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
@@ -36,9 +38,11 @@ public class TaskAddPanel extends Panel{
         final Model<String> taskTypeModel = Model.of();
         final Model<String> taskStateModel = Model.of();
         final Model<Double> taskPercentModel = Model.of();
+        taskAddForm.add( new Label("typen", TaskType.values().toString()));
+        taskAddForm.add( new Label("prios", TaskPriority.values().toString()));
 
         taskAddForm.add(new TextField<>               ("name", taskNameModel));
-        taskAddForm.add(new TextField<>               ("type", taskTypeModel));
+        taskAddForm.add(new TextField<>               ("hallo", taskTypeModel));
         taskAddForm.add(new TextField<>               ("state", taskStateModel));
         taskAddForm.add(new NumberTextField<Double>   ("percent", taskPercentModel));
 
@@ -47,12 +51,13 @@ public class TaskAddPanel extends Panel{
             protected void onSubmit(final AjaxRequestTarget target, final Form<?> form){
                 super.onSubmit(target, form);
                 final EtaSession session = (EtaSession) getSession();
-                Task task = new Task().create()
+
+                Task task = new Task()
                         .setAssignedUser(session.getUser())
                         .setName(taskNameModel.getObject())
-                        .setPercentage(taskPercentModel.getObject())
+                        .setPercentage((Double) Double.valueOf(taskPercentModel.getObject().toString()))
                         .setPriority(TaskPriority.valueOf(taskStateModel.getObject()))
-                        .setType(TaskType.valueOf(taskTypeModel.getObject()));
+                        .setType(TaskType.valueOf(taskTypeModel.getObject())).create();
 
                 RequestCycle.get().scheduleRequestHandlerAfterCurrent(
                             new RenderPageRequestHandler(
