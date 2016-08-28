@@ -9,7 +9,19 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<div></div>
+<form wicket:id="loginForm">
+    <div class="form-group">
+        <label for="user">Name:</label>
+        <input wicket:id="user" class="form-control" id="user" type="text"/>
+    </div>
+    <div class="form-group">
+        <label for="password">Name:</label>
+        <input wicket:id="password" class="form-control" id="password" type="password"/>
+    </div>
+    <div class="form-group">
+        <input wicket:id="loginSub" class="btn btn-default" type="loginSub" value="Login"/>
+    </div>
+</form>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
