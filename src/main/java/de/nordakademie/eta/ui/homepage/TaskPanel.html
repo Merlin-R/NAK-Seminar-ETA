@@ -2,7 +2,19 @@
 <html xmlns:wicket="http://wicket.apache.org" xmlns="http://www.w3.org/1999/xhtml">
 <body>
 <wicket:panel>
-    <table wicket:id="taskTable"></table>
+    <table>
+        <thead>
+        <tr>
+            <th>Task name</th>
+            <th>Task description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr wicket:id="taskList">
+            <td wicket:id="tName">Product</td>
+            <td wicket:id="tDescription">PassedColumn</td>
+        </tr>
+        </tbody>
 </wicket:panel>
 </body>
 </html>
