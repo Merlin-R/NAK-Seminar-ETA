@@ -6,7 +6,6 @@ import org.bson.Document;
 
 import de.nordakademie.eta.database.DBException;
 import de.nordakademie.eta.database.MongoManager;
-import de.nordakademie.eta.projects.Project;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -31,7 +30,6 @@ public class Task {
 
 	@Setter(AccessLevel.NONE)
 	Integer			projectId;
-	Project			project;
 
 	@Override
 	public Task clone() {
