@@ -14,11 +14,14 @@ public class HomePage extends WebPage {
 
   public HomePage() {
     EtaSession session = (EtaSession) getSession();
-    if( !session.isLoggedIn()){
-      RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(LoginPage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
+    if(false){ //!session.isLoggedIn()){
+      RequestCycle.get().scheduleRequestHandlerAfterCurrent
+              (new RenderPageRequestHandler(
+                      new PageProvider(LoginPage.class),
+                      RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
     } else{
       add(new TaskPanel("taskPanel"));
-      add(new TaskAddPanel("createTaskPanal"));
+      add(new TaskAddPanel("createTaskPanel"));
     }
 
 
