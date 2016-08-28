@@ -14,7 +14,7 @@ public class HomePage extends WebPage {
 
   public HomePage() {
     EtaSession session = (EtaSession) getSession();
-    if(false){ //!session.isLoggedIn()){
+    if(!session.isLoggedIn()){
       RequestCycle.get().scheduleRequestHandlerAfterCurrent
               (new RenderPageRequestHandler(
                       new PageProvider(LoginPage.class),
