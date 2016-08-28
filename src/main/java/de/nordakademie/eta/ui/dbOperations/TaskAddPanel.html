@@ -11,21 +11,14 @@
 </head>
 <body>
 <wicket:panel>
-    <form wicket:id="taskAddForm">
+    <form wicket:id="taskAddForm" >
         <div class="form-group">
             <label for="name">Name:</label>
             <input wicket:id="name" class="form-control" id="name" type="text"/>
         </div>
         <div class="form-group">
-            <label for="typ">Typ:</label>
-            <select wicket:id="typ" name="typ" size="1">
-                    <option>FEATURE</option>
-                    <option>BUG</option>
-                    <option>CONFIG</option>
-                    <option>STATUS</option>
-                    <option>COMMENT</option>
-            </select>
-
+            <label for="type">Typ:</label>
+            <input wicket:id="type" class="form-control" id="type" type="text"/>
         </div>
         <div class="form-group">
             <label for="percent">Prozent:</label>

@@ -11,12 +11,16 @@ import org.apache.wicket.core.request.handler.PageProvider;
 import org.apache.wicket.core.request.handler.RenderPageRequestHandler;
 import org.apache.wicket.extensions.markup.html.form.palette.component.Selection;
 import org.apache.wicket.extensions.markup.html.form.select.SelectOption;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.cycle.RequestCycle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nils on 28.08.2016.
@@ -34,7 +38,7 @@ public class TaskAddPanel extends Panel{
         final Model<Double> taskPercentModel = Model.of();
 
         taskAddForm.add(new TextField<>               ("name", taskNameModel));
-        taskAddForm.add(new SelectOption<String>      ("typ", taskTypeModel));
+        taskAddForm.add(new TextField<>               ("type", taskTypeModel));
         taskAddForm.add(new TextField<>               ("state", taskStateModel));
         taskAddForm.add(new NumberTextField<Double>   ("percent", taskPercentModel));
 
