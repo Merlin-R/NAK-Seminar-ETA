@@ -3,3 +3,8 @@
 build/
 target/
 .gitignore
+/gradlew
+/gradlew.bat
+/.project
+/.classpath
+/build.gradle
