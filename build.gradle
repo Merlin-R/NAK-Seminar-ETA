@@ -30,6 +30,7 @@ dependencies {
   compile 'org.mongodb:mongodb-driver:3.3.0'
   compile 'org.hibernate:hibernate-validator:5.2.4.Final'
   compile 'com.google.code.google-collections:google-collect:snapshot-20080530'
+  compile 'com.google.code.google-collections:google-collect:snapshot-20080530'
 
   runtime 'ch.qos.logback:logback-classic:1.1.7'
 
