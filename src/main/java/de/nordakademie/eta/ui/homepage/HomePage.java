@@ -15,8 +15,10 @@ public class HomePage extends WebPage {
     EtaSession session = (EtaSession) getSession();
     if( !session.isLoggedIn()){
       RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(LoginPage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
+    } else{
+      add(new TaskPanel("taskPanel"));
     }
-    add(new TaskPanel("taskpanel"));
+
 
   }
 }
