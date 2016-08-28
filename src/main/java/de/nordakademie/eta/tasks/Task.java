@@ -10,16 +10,14 @@ import de.nordakademie.eta.projects.Project;
 import de.nordakademie.eta.projects.Projects;
 import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
 
 @Data
 public class Task {
 
-	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-	Integer			_id;
+	Integer			id;
 
 	TaskPriority	priority;
 	String			name;
@@ -47,42 +45,42 @@ public class Task {
 	@Override
 	public Task clone() {
 		val task = Task.fromDocument(toDocument());
-		task._id = null;
+		task.id = null;
 		return task;
 	}
 
 	public Task persist() {
-		if (_id == null) create();
+		if (id == null) create();
 
 		val filter = new Document();
-		filter.put("id", _id);
+		filter.put("_id", id);
 
 		MongoManager.getCollection("tasks").updateOne(filter, toDocument());
 		return this;
 	}
 
 	public Task create() {
-		if (_id != null) {
+		if (id != null) {
 			DBException.throwFor("Task already exists");
 			return this;
 		}
 		val doc = toDocument();
 		MongoManager.getCollection("tasks").insertOne(doc);
-		_id = doc.getInteger("_id");
+		id = doc.getInteger("_id");
 		return this;
 	}
 
 	public Task delete() {
-		if (_id == null) {
+		if (id == null) {
 			DBException.throwFor("Can't delete none-existing task");
 			return this;
 		}
 
 		val filter = new Document();
-		filter.put("id", _id);
+		filter.put("_id", id);
 
 		MongoManager.getCollection("tasks").deleteOne(filter);
-		_id = null;
+		id = null;
 		return this;
 	}
 
@@ -97,7 +95,7 @@ public class Task {
 		doc.put("description", description);
 		doc.put("dueDate", dueDate);
 		doc.put("creationDate", creationDate);
-		doc.put("_id", _id);
+		doc.put("_id", id);
 
 		return doc;
 	}
@@ -115,7 +113,7 @@ public class Task {
 		task.dueDate = doc.getDate("dueDate");
 		task.creationDate = doc.getDate("creationDate");
 
-		task._id = doc.getInteger("_id");
+		task.id = doc.getInteger("_id");
 
 		return task;
 	}
