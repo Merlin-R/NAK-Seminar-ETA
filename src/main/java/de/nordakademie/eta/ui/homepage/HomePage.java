@@ -16,6 +16,7 @@ public class HomePage extends WebPage {
     if( !session.isLoggedIn()){
       RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(LoginPage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
     }
+    add(new TaskPanel("taskpanel"));
 
   }
 }
