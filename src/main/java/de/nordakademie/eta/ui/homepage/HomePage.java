@@ -1,6 +1,7 @@
 package de.nordakademie.eta.ui.homepage;
 
 import de.nordakademie.eta.ui.EtaSession;
+import de.nordakademie.eta.ui.dbOperations.TaskAddPanel;
 import de.nordakademie.eta.ui.login.LoginPage;
 import org.apache.wicket.core.request.handler.PageProvider;
 import org.apache.wicket.core.request.handler.RenderPageRequestHandler;
@@ -17,6 +18,7 @@ public class HomePage extends WebPage {
       RequestCycle.get().scheduleRequestHandlerAfterCurrent(new RenderPageRequestHandler(new PageProvider(LoginPage.class), RenderPageRequestHandler.RedirectPolicy.NEVER_REDIRECT));
     } else{
       add(new TaskPanel("taskPanel"));
+      add(new TaskAddPanel("createTaskPanal"));
     }
 
 
